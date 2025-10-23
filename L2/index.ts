@@ -56,7 +56,6 @@ const person3 = {
     role:Role.ADMIN
 }
 
-
 if(person3.role === Role.AUTHER)
 {
     console.log("AUTHER")
@@ -65,8 +64,10 @@ if(person3.role === Role.AUTHER)
 else if(person3.role === Role.ADMIN)
 {
     console.log("ADMIN")
-
 }
+
+
+
 
 
 

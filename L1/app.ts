@@ -14,3 +14,4 @@ const ans = add(n1,n2,true,"hello world");
 console.log("ans ",ans); 
 
 
+let firstName:string = "Ramesh"
