@@ -41,8 +41,9 @@
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
     "skipLibCheck": true
-  }
+  },
   // "exclude": ["interface","node_module"] // it will stop a particuler file for not compling
   //"include":["clasess"] // it will compile only include file ,
   //""exclude":["**.dev.ts"]//it will not compile all the files which have .dev.ts at the end 
+  "exclude": ["clasess"]
 }

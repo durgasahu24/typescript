@@ -1,119 +1,176 @@
-//class name can be small 
 /*
-class Department {
-  name: string;
-  constructor(n: string) {
-    this.name = n;
- }
+//Class exmaple
+class Person {
+    name:string;
+    age:number;
 
-  getDetail() {
-    console.log("Department ",this.name);
-  }
+    constructor(name:string,age:number)
+    {
+        this.name = name;
+        this.age = age;
+    }
+
+    getValue()
+    {
+        console.log(`${this.name} is good boy its age is ${this.age}`)
+    }
 }
 
-const obj = new Department("Accounting")
-obj.getDetail();
 
-const copyObj = {  // from here this value is going
-    name:"patel",
-    description:obj.getDetail
-}
-
-copyObj.description();
+const obj = new Person("Abhishek",33);
+obj.getValue();
 */
+//readOnly : we can instialised only one time like readOnly id
 //Access modifier(private ,public and readonly)
 //by deaulter access specifier is public
 /*
-class Department {
+class Person{
+    // name:string;
+    // age:number;
+     private AllEmp:number[] = [];
+
+    // constructor(name:string,age:number)
+    // {
+    //     this.name = name
+    //     this.age = age
+    // }
+
+
+     addValue(num:number)
+     {
+        this.AllEmp.push(num)
+     }
+
+     showArr()
+     {
+        console.log(this.AllEmp);
+     }
+}
+
+let obj = new Person();
+obj.addValue(22);
+obj.showArr();
+// obj.AllEmp = []; // because of this we need to make private
+obj.showArr();
+*/
+/*
+//Inheritance ,override
+class person {
+
     name:string;
-    employee:string;
-    // private AllEmp:string[] = [];
-     AllEmp:string[] = [];
-    constructor(name:string,emp:string)
+    age:number;
+    emp:number[]=[];
+
+    constructor(name:string,age:number)
     {
         this.name = name;
-        this.employee =emp;
+        this.age = age
     }
-    adEmployee(emp:string)
+
+
+    greet()
     {
-        this.AllEmp.push(emp);
+        console.log(`${this.name} is good boy . His age is ${this.age}`)
     }
-    printval()
+
+    addVal(num:number):void
     {
-        console.log(this.AllEmp)
+        this.emp.push(num)
     }
 }
-const obj = new Department("ramesh","accounting")
-obj.adEmployee("ramesh")
-obj.adEmployee("hari");
-obj.printval();
-// obj.AllEmp = ["1"];//from here we can change Allemp value tha't why we need private
-// obj.printval();
-*/
-var school = /** @class */ (function () {
-    function school(n) {
-        this.InterArr = [];
-        this.name = n;
+
+class son extends person{
+    grade:number;
+    constructor(name:string,age:number,grade:number)
+    {
+        super(name,age);
+        this.grade = grade
     }
-    school.prototype.addVal = function () {
-        this.InterArr.push(this.name);
-    };
-    school.prototype.getValue = function () {
-        console.log(this.name);
-    };
-    return school;
-}());
-var obj = new school("Ramesh");
-obj.getValue();
-//readOnly : we can instialised only one time like readOnly id
-//inheritence, override properties && protected access modifier , getter , setter method
-// class InCla extends Department {
-//     constructor(name:string , emp:string)
-//     {
-//         super(name,emp);
-//     }
-//override
-// adEmployee(emp: string): void {
-//     if(emp == "Patel")
-//     {
-//         return
-//     }
-//     this.AllEmp.push(emp);
-// }
-// get getter()
-// {
-//     if(this.adEmployee.length > 0)
-//     {
-//         console.log("All users");
-//     this.printval()
-//         return
-//     }
-//     else
-//     {
-//         throw new Error("Report not found");
-//     }
-// }
-// set setter()
-// {
-// same as above
-// }
-// }
-// const obj2 = new InCla("hari","syma");
-// obj2.adEmployee("abhi");
-// obj2.printval();
-// obj2.adEmployee("Patel");
-// obj2.printval();
-// obj2.adEmployee("shivani");
-// obj2.printval();
-// obj2.getter;
-// for setter obj2.setter = "";
-//static method:- in which we don't kneed to use new method for create obj we can direct access property from class name 
-// class School{
-//     static child()
-//     {
-//         console.log("childs are great")
-//     }
-// }
-// let obj3 = School.child();
-// console.log(obj3); 
-// abstract classes
+
+    study()
+    {
+        console.log(`${this.name} grade is ${this.grade}`);
+    }
+
+    addVal(num: number): void {
+        if(num == 33) return;
+        this.emp.push(num);
+    }
+
+    showVal()
+    {
+        console.log(this.emp);
+    }
+}
+
+let obj = new son("Ravi",11,7.8);
+obj.greet();
+obj.study();
+obj.addVal(22);
+obj.addVal(33);
+obj.addVal(44)
+obj.showVal();
+*/
+// Abstract class (it's like a blue print ). We can declare but not intailzed 
+/*
+abstract class Animal
+{
+    constructor(public name:string){}
+
+
+   abstract makeSound():void
+
+    move():void{
+        console.log(`${this.name} is moving around `)
+    }
+}
+
+// sub class will be alway form captial letter
+class Dog extends Animal{
+
+    makeSound(): void {
+        console.log("Bhao Bhao")
+    }
+}
+
+
+let obj  =  new Dog("Tummy");
+obj.makeSound();
+obj.move();
+*/
+/*
+//getter and setter
+class Student {
+  private _age: number = 0;
+
+  // Setter: used to assign value with validation
+  set age(value: number) {
+    if (value < 0) {
+      console.log("Age cannot be negative!");
+      return;
+    }
+    this._age = value;
+  }
+
+  // Getter: used to access value safely
+  get age(): number {
+    return this._age;
+  }
+}
+
+const s1 = new Student();
+s1.age = 21;   // ✅ OK
+s1.age = -5;   // ❌ Invalid, warning shown
+console.log(s1.age); // 21
+*/
+/*
+// Static :- in static method we don't need to create obj of a class we can directly acces property . we can't access through it class intstance (obj)
+class college {
+
+    static quality()
+    {
+        console.log("All student are good body")
+    }
+}
+college.quality();
+*/
