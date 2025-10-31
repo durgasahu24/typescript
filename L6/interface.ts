@@ -76,4 +76,42 @@ obj.greet("good")
 
 
 
+/*
+//function define ushing 
+// type addFunc = (a:number , b:number) => number;
+
+// function define ushing interface
+interface addFunc {
+    (n1:number,n2:number):number
+}
+let add : addFunc;
+add = (n1:number , n2:number) => 
+{
+    return n1+n2;    
+}
+*/
+
+
+/*
+//opstinal
+interface Named {
+    readonly name :string,
+    outputName?:string
+}
+
+class Person {
+    name:string;
+    constructor(n:string)
+    {
+        this.name = n;
+    }
+}
+*/
+
+
+
+
+
+
+
 
